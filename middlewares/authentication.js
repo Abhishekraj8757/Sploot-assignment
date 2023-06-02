@@ -5,7 +5,7 @@ dotenv.config();
 
 export const isAuthenticated = (req,res,next) => {
  
-  let token = req.headers.authorization.split(" ")[1];
+  let token = req?.headers?.authorization?.split(" ")[1];
   if(!token)return res.status(400).json({'message' : 'token is missing!'});
   
   let decodedtoken;
