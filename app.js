@@ -12,8 +12,12 @@ import user from './routes/user.js';
 
 app.use('/api',user);
 
-app.listen(process.env.PORT,() => {
-    mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
+app.use('',(req,res) => {
+    res.send('Deployed successfully!')
+})
+
+app.listen(process.env.PORT, async () => {
+    await mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
      .then(() => console.log(`Server is listening on port ${process.env.PORT}`))
      .catch((error) => console.log(error))
 })
